@@ -1,0 +1,80 @@
+﻿<Window x:Class="Venus.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Venus"
+        mc:Ignorable="d"
+        Title="Venus" Height="450" Width="525"
+        Style="{StaticResource DefaultWindowStyling}"
+        DataContext="{Binding Main, Source={StaticResource Locator}}">
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </Window.Resources>
+    
+
+    <Grid>
+
+        <ListBox 
+            Style="{StaticResource DefaultListboxStyle}"
+            Margin="5,60,5,30" 
+            HorizontalContentAlignment="Stretch" 
+            ItemsSource="{Binding CoinList}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="0,2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="75" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Style="{StaticResource ListboxItemTextBlock}" Grid.Column="0" Text="{Binding Symbol}" Padding="4" />
+                        <TextBlock Style="{StaticResource ListboxItemTextBlock}" Grid.Column="1" Text="{Binding BalanceText}"  Padding="4" />
+                        <TextBlock Style="{StaticResource ListboxItemTextBlock}" Grid.Column="2" Text="{Binding Price}"  Padding="4" />
+                        <TextBlock Style="{StaticResource ListboxItemTextBlock}" Grid.Column="3" Text="{Binding DollarValueText}" Padding="4" />
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StatusBar
+            Style="{StaticResource StatusBarStyle}"
+            VerticalAlignment="Bottom">
+
+            <Label 
+                Content="&#xf021;" 
+                Style="{StaticResource StatusBarLabels}"
+                FontFamily="{StaticResource GlyphFontFamily}" 
+                Visibility="{Binding Path=UpdateStatusMessageVisible, Converter={StaticResource BoolToVis}}"
+                Width="20" Height="25" />
+
+        </StatusBar>
+
+        <Button 
+            Style="{StaticResource TextOnlyButton}" 
+            Content="Refresh" 
+            Command="{Binding RefreshCommand}"
+            VerticalAlignment="Top"
+            Margin="0,8,70,0" HorizontalAlignment="Right" Width="60"/>
+        <Label 
+            Style="{StaticResource TextboxLabels}"
+            Content="{Binding PortfolioDollarValueString}" 
+            FontWeight="Bold"
+            Padding="0"
+            FontSize="18"
+            Margin="0,29,10,0"  
+            Width="160" 
+            Height="26"/>
+        <Button 
+            Style="{StaticResource TextOnlyButton}" 
+            Command="{Binding OpenSettingsWindowCommand}"
+            Content="Settings" 
+            VerticalAlignment="Top"
+            HorizontalAlignment="Right" 
+            Margin="0,8,10,0"
+            Width="60"/>
+    </Grid>
+</Window>
+
