@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using GalaSoft.MvvmLight;
+using Venus.View;
 
 namespace Venus.MVVM.Services
 {
@@ -22,6 +23,17 @@ namespace Venus.MVVM.Services
                 Owner = Application.Current.MainWindow,
                 Topmost = true
             };
+            win.ShowDialog();
+        }
+
+        public void ShowAboutWindow()
+        {
+            var win = new About
+            {
+                Owner = Application.Current.MainWindow,
+                Topmost = true
+            };
+
             win.ShowDialog();
         }
     }

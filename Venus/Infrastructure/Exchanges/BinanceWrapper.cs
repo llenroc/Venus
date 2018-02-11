@@ -122,7 +122,9 @@ namespace Venus.Infrastructure.Exchanges
 
         public Task<decimal> GetBitcoinPrice()
         {
-            return Task.Run(() => _summary.FirstOrDefault(x => x.Symbol == $"BTCUSDT")?.Price ?? 0);
+            return Task.Run(
+                () => 
+                    _summary.FirstOrDefault(x => x.Symbol == $"BTCUSDT")?.Price ?? 0);
         }
 
         public decimal GetCoinBtcValue(string coin)

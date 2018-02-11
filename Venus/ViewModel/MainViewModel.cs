@@ -1,9 +1,7 @@
 using System;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using Venus.Infrastructure;
 using Venus.Infrastructure.Events;
 using Venus.Infrastructure.Events.EventClasses;
 using Venus.Model;
@@ -82,6 +80,27 @@ namespace Venus.ViewModel
             }
         }
 
+        private RelayCommand _showAbout;
+        public RelayCommand ShowAbout
+        {
+            get
+            {
+                if (_showAbout == null)
+                {
+                    ShowAbout =
+                        new RelayCommand(() => { ShowAboutExecute(null, null);},
+                            () => true);
+                }
+
+                return _showAbout;
+            }
+            set
+            {
+                _showAbout = value;
+                RaisePropertyChanged();
+            }
+        }
+
         private bool _updateStatusMessageVisible = true;
         public bool UpdateStatusMessageVisible
         {
@@ -95,15 +114,6 @@ namespace Venus.ViewModel
 
         public MainViewModel(IEventPublisher publisher, IWindowService windowService)
         {
-            ////if (IsInDesignMode)
-            ////{
-            ////    // Code runs in Blend --> create design time data.
-            ////}
-            ////else
-            ////{
-            ////    // Code runs "for real"
-            ////}
-
             _publisher = publisher;
             _windowService = windowService;
 
@@ -115,6 +125,11 @@ namespace Venus.ViewModel
         {
             App.DataManager.UpdateAllAccounts();
             App.TimerManager.RestartTimer();
+        }
+
+        private void ShowAboutExecute(object sender, EventArgs e)
+        {
+            _windowService.ShowAboutWindow();
         }
 
         private void OpenSettingsWindowExecute(object sender, EventArgs e)

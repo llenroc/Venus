@@ -7,5 +7,6 @@ namespace Venus.MVVM.Services
     {
         void ShowWindow<T>(ViewModelBase viewModel) where T : Window, new();
         void ShowDialog<T>(ViewModelBase viewModel) where T : Window, new();
+        void ShowAboutWindow();
     }
 }

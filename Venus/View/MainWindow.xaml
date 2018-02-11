@@ -12,7 +12,7 @@
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
     </Window.Resources>
-    
+
 
     <Grid>
 
@@ -39,6 +39,8 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
+
+
         <StatusBar
             Style="{StaticResource StatusBarStyle}"
             VerticalAlignment="Bottom">
@@ -57,7 +59,10 @@
             Content="Refresh" 
             Command="{Binding RefreshCommand}"
             VerticalAlignment="Top"
-            Margin="0,8,70,0" HorizontalAlignment="Right" Width="60"/>
+            Margin="0,8,70,0" 
+            HorizontalAlignment="Right" 
+            Width="60"/>
+
         <Label 
             Style="{StaticResource TextboxLabels}"
             Content="{Binding PortfolioDollarValueString}" 
@@ -75,6 +80,16 @@
             HorizontalAlignment="Right" 
             Margin="0,8,10,0"
             Width="60"/>
+
+        <Button 
+            Style="{StaticResource TextOnlyButton}" 
+            Content="About" 
+            Command="{Binding ShowAbout}" 
+            Margin="0,8,130,0" 
+            HorizontalAlignment="Right" 
+            Width="60" 
+            Height="16" 
+            VerticalAlignment="Top"/>
     </Grid>
 </Window>
 

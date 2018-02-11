@@ -1,0 +1,61 @@
+﻿<Window x:Class="Venus.View.About"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Venus.View"
+        mc:Ignorable="d"
+        Title="About" Height="300" Width="300"
+        Style="{StaticResource DefaultWindowStyling}"
+        ResizeMode="NoResize">
+    <Grid>
+
+
+        <Button 
+            Content="Close" 
+            Style="{StaticResource TextOnlyButton}"
+            Margin="0,0,10,10" 
+            Command="{Binding CloseCommand, UpdateSourceTrigger=PropertyChanged}" 
+            Height="20" 
+            VerticalAlignment="Bottom" 
+            HorizontalAlignment="Right" 
+            Width="77" 
+            Click="Button_Click"/>
+
+        <Image
+            Source="../Assets/VenusLogo.png"
+            Height="100" 
+            Width="100"
+            Margin="0,10,0,0" 
+            VerticalAlignment="Top" HorizontalAlignment="Center"/>
+
+        <Label 
+            Content="Shared under the MIT License" 
+            Style="{StaticResource LabelDefault}"
+            Margin="10,190,10,0"
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="Center"/>
+
+        <Label 
+            Content="https://github.com/ZXeno/Venus" 
+            Style="{StaticResource LabelDefault}"
+            Margin="10,165,10,0"
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="Center"/>
+
+        <Label
+            Content="Developed By: Jonathan Cain"
+            Style="{StaticResource LabelDefault}"
+            Margin="10,140,10,0"
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="Center"/>
+
+        <Label 
+            Content="Venus " 
+            Style="{StaticResource LabelDefault}"
+            Margin="10,115,10,0"
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="Center"
+            Width="Auto"/>
+    </Grid>
+</Window>
